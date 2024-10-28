@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export interface Movie {
   Title: string
@@ -9,7 +10,6 @@ export interface Movie {
 }
 
 export default function Movies() {
-  // const [getter, setter] = useState(초깃값)
   const [searchText, setSearchText] = useState('')
   const [movies, setMovies] = useState<Movie[]>([])
 
@@ -34,7 +34,11 @@ export default function Movies() {
       </div>
       <ul>
         {movies.map(movie => {
-          return <li key={movie.imdbID}>{movie.Title}</li>
+          return (
+            <li key={movie.imdbID}>
+              <Link to={`/movies/${movie.imdbID}`}>{movie.Title}</Link>
+            </li>
+          )
         })}
       </ul>
     </>
