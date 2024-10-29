@@ -8,25 +8,26 @@ export default tseslint.config(
   { ignores: ['dist'] },
   {
     extends: [
-      js.configs.recommended, 
-      ...tseslint.configs.recommended, 
-      'plugin:prettier/recommended'
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      'plugin:prettier/recommended',
+      'plugin:@tanstack/eslint-plugin-query/recommended'
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: globals.browser
     },
     plugins: {
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      'react-refresh': reactRefresh
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true },
-      ],
-    },
-  },
+        { allowConstantExport: true }
+      ]
+    }
+  }
 )

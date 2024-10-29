@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
-import wait from '@/core/wait'
 
 export interface Movie {
   Title: string
