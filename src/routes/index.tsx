@@ -5,6 +5,8 @@ import About from './pages/About'
 import SignIn from './pages/SignIn'
 import Movies from './pages/Movies'
 import MovieDetails from './pages/MovieDetails'
+import NotFound from './pages/NotFound'
+import requiresAuth from './loaders/requiresAuth'
 
 // Routes
 const router = createBrowserRouter([
@@ -26,13 +28,20 @@ const router = createBrowserRouter([
       },
       {
         path: '/movies',
-        element: <Movies />
-      },
-      {
-        path: '/movies/:movieId',
-        element: <MovieDetails />
+        element: <Movies />,
+        loader: requiresAuth,
+        children: [
+          {
+            path: '/movies/:movieId',
+            element: <MovieDetails />
+          }
+        ]
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ])
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Modal from '@/components/Modal'
 
 export interface MovieDetails {
   Title: string
@@ -34,6 +35,7 @@ export interface Rating {
 }
 
 export default function MovieDetails() {
+  console.log('MovieDetails')
   const { movieId } = useParams()
   const [movie, setMovie] = useState<MovieDetails>()
 
@@ -48,7 +50,7 @@ export default function MovieDetails() {
   }
 
   return (
-    <>
+    <Modal>
       <h1>Movie Details Page!</h1>
       {movie && (
         <>
@@ -62,6 +64,6 @@ export default function MovieDetails() {
           <p>{movie.Plot}</p>
         </>
       )}
-    </>
+    </Modal>
   )
 }
